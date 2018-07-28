@@ -232,6 +232,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/28/datetime Module/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="正献">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/28/datetime Module/" itemprop="url">datetime Module</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T08:37:56+08:00">
+                07-28-2018
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="datetime-datetime-类型"><a href="#datetime-datetime-类型" class="headerlink" title="datetime.datetime 类型"></a>datetime.datetime 类型</h3><pre><code>&gt;&gt;&gt;datetime.datetime.now()
+&gt;&gt;&gt;datetime.datetime(2018, 7, 28, 7, 28, 17, 261975)
+</code></pre><h3 id="datetime-date-类型"><a href="#datetime-date-类型" class="headerlink" title="datetime.date 类型"></a>datetime.date 类型</h3><pre><code>&gt;&gt;&gt;datetime.date.today()
+&gt;&gt;&gt;datetime.date(2018, 7, 28)
+</code></pre><h3 id="strftime-format-方法"><a href="#strftime-format-方法" class="headerlink" title="strftime(format)方法"></a>strftime(format)方法</h3><p>将datetime.datetime类型转换成字符串</p>
+<blockquote>
+<p><img src="https://i.imgur.com/bK4CCXk.png" alt=""></p>
+</blockquote>
+<h3 id="strptime-str-format"><a href="#strptime-str-format" class="headerlink" title="strptime(str, format)"></a>strptime(str, format)</h3><p>将字符串转换为datetime.datetime格式</p>
+<blockquote>
+<p><img src="https://i.imgur.com/f917x2u.png" alt=""></p>
+</blockquote>
+<p>！注意：字符串的格式和转换的格式一致</p>
+<pre><code>&gt;&gt;&gt;datetime.datetime.strptime(s, &apos;%Y-%d-%m %H:%M:%S&apos;)
+ValueError                            Traceback (most recent call last)
+......
+ValueError: time data &apos;2018-07-28 07:44:22&apos; does not match format &apos;%Y-%d-%m %H:%M:%S&apos;
+</code></pre><blockquote>
+<p><img src="https://i.imgur.com/9993FNf.png" alt=""></p>
+<p>最后返回的是datetime.datetime格式。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/28/sys-Module-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -251,7 +391,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/28/sys-Module-笔记/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/07/28/sys-Module-笔记/" itemprop="url">sys Module 笔记</a></h1>
         
 
         <div class="post-meta">
@@ -303,10 +443,7 @@
       
         
           
-            <hr>
-<h2 id="title-sys-Module-笔记"><a href="#title-sys-Module-笔记" class="headerlink" title="title: sys Module 笔记"></a>title: sys Module 笔记</h2><p>date: 2018-07-28 08:21:12</p>
-<p>tags:sys</p>
-<h3 id="sys-platform"><a href="#sys-platform" class="headerlink" title="sys.platform"></a>sys.platform</h3><p>用来构建解析器的操作系统平台。</p>
+            <h3 id="sys-platform"><a href="#sys-platform" class="headerlink" title="sys.platform"></a>sys.platform</h3><p>用来构建解析器的操作系统平台。</p>
 <pre><code>In: sys.platform
 Out: &apos;Linux&apos;
 </code></pre><h3 id="sys-version"><a href="#sys-version" class="headerlink" title="sys.version"></a>sys.version</h3><p>返回版本号信息。</p>
@@ -722,7 +859,7 @@ Out: sys.version_info(major=3, minor=6, micro=5, releaselevel=&apos;final&apos;,
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
