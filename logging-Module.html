@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Loggerlogger 对象输出的错误级别：  NOTSET ：0 DEBUG：10 INFO：20 WARNING：30 ERROR：40 CRITICAL：50  输出到终端： import logging logger = logging.getLogger()  # 获取系统的Logger对象 logger    当前的Logger为root，默认级别为WARNING. type(lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="logging Module">
+<meta property="og:url" content="http://yoursite.com/logging-Module.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="Loggerlogger 对象输出的错误级别：  NOTSET ：0 DEBUG：10 INFO：20 WARNING：30 ERROR：40 CRITICAL：50  输出到终端： import logging logger = logging.getLogger()  # 获取系统的Logger对象 logger    当前的Logger为root，默认级别为WARNING. type(lo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/bBeXqCc.png">
+<meta property="og:image" content="https://i.imgur.com/55iruhg.png">
+<meta property="og:image" content="https://i.imgur.com/capgBkO.png">
+<meta property="og:image" content="https://i.imgur.com/HIqPF56.png">
+<meta property="og:image" content="https://i.imgur.com/JM4C7de.png">
+<meta property="og:image" content="https://i.imgur.com/j2paKJB.png">
+<meta property="og:image" content="https://i.imgur.com/bETYF9Z.png">
+<meta property="og:updated_time" content="2018-07-28T14:05:14.171Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="logging Module">
+<meta name="twitter:description" content="Loggerlogger 对象输出的错误级别：  NOTSET ：0 DEBUG：10 INFO：20 WARNING：30 ERROR：40 CRITICAL：50  输出到终端： import logging logger = logging.getLogger()  # 获取系统的Logger对象 logger    当前的Logger为root，默认级别为WARNING. type(lo">
+<meta name="twitter:image" content="https://i.imgur.com/bBeXqCc.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/logging-Module.html"/>
+
+
+
+
+
+  <title>logging Module | 学习笔记</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/logging-Module.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="正献">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">logging Module</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T20:20:59+08:00">
+                07-28-2018
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<h3 id="Logger"><a href="#Logger" class="headerlink" title="Logger"></a>Logger</h3><p>logger 对象输出的错误级别：</p>
+<blockquote>
+<p>NOTSET ：0</p>
+<p>DEBUG：10</p>
+<p>INFO：20</p>
+<p>WARNING：30</p>
+<p>ERROR：40</p>
+<p>CRITICAL：50</p>
+</blockquote>
+<p>输出到终端：</p>
+<pre><code>import logging
+logger = logging.getLogger()  # 获取系统的Logger对象
+logger
+</code></pre><blockquote>
+<p><img src="https://i.imgur.com/bBeXqCc.png" alt=""></p>
+</blockquote>
+<p>当前的Logger为root，默认级别为WARNING.</p>
+<pre><code>type(logger)
+</code></pre><blockquote>
+<p><img src="https://i.imgur.com/55iruhg.png" alt=""></p>
+</blockquote>
+<pre><code>logger.warning(&apos;is when the event was loged&apos;)
+</code></pre><blockquote>
+<p><img src="https://i.imgur.com/capgBkO.png" alt=""></p>
+</blockquote>
+<p>默认输出格式：</p>
+<pre><code>&apos;%(levelname)s:%(name)s:%(message)s&apos;
+</code></pre><p>设置INFO级别：</p>
+<pre><code>logger.setLevel(&apos;INFO&apos;)
+</code></pre><blockquote>
+<p><img src="https://i.imgur.com/HIqPF56.png" alt=""></p>
+</blockquote>
+<p>低级别的不会输出</p>
+<pre><code>logger.info(&apos;is when this event was loged&apos;)
+logger.debug(&apos;is when this event was loged&apos;)
+</code></pre><blockquote>
+<p><img src="https://i.imgur.com/JM4C7de.png" alt=""></p>
+</blockquote>
+<h3 id="logging-basicConfig"><a href="#logging-basicConfig" class="headerlink" title="logging.basicConfig()"></a>logging.basicConfig()</h3><p>输入到文件</p>
+<pre><code>logging.basicConfig(
+    filename=filename.log,
+    level=logging.debug,
+    format=&apos;[%(levelname)s]:%(asctime)-10s :%(message)s,
+    datefmt=&apos;%Y-%m-%d:%H:%M:%S&apos;
+    )
+</code></pre><blockquote>
+<p>myapp.py        </p>
+</blockquote>
+<pre><code>import logging
+
+def main():
+    basicConfig(
+        filename=myapp.log,
+        level=logging.DEBUG,    # DEBUG要大写，or  level=&apos;DEBUG&apos;
+        format=&apos;[%(levelname)s]:%(asctime)-10s:%(message)s&apos;,
+        datefmt=&apos;%Y-%m-%d:%H:%M:%S&apos;,
+        )
+    logging.debug(&apos;Starting....&apos;)
+    logging.debug(&apos;Doing Somethings...&apos;)
+    logging.debug(&apos;Finishing...&apos;)
+    logging.info(&apos;starting...&apos;)
+if name == &apos;__main__&apos;:
+    main()
+</code></pre><blockquote>
+<p><img src="https://i.imgur.com/j2paKJB.png" alt=""></p>
+</blockquote>
+<h3 id="setLevel"><a href="#setLevel" class="headerlink" title="setLevel()"></a>setLevel()</h3><p>可以设置logger的级别</p>
+<pre><code>logger.setLevel(&apos;ERROR&apos;)
+</code></pre><h3 id="logging-getLogger-or-logging-getLoger-‘sample-test’"><a href="#logging-getLogger-or-logging-getLoger-‘sample-test’" class="headerlink" title="logging.getLogger()  or logging.getLoger(‘sample_test’)"></a>logging.getLogger()  or logging.getLoger(‘sample_test’)</h3><p>获取当前的实例</p>
+<h3 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h3><blockquote>
+<p>FileHandler<br>StreamHandler</p>
+</blockquote>
+<h3 id="最佳使用logging的方案"><a href="#最佳使用logging的方案" class="headerlink" title="最佳使用logging的方案"></a>最佳使用logging的方案</h3><pre><code>import logging
+
+logger = logging.getLogger()
+handler = logging.StreamHandler()
+formatter = logging.Formatter(
+    &apos;%(asctime)s %(name)-12s %(levelname)-8s %(message)s&apos;
+    ）
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+logger.setLevel(logging.DEBUG)
+
+logger.debug(&apos;This is a %s&apos;, &apos;test&apos;)
+</code></pre><blockquote>
+<p><img src="https://i.imgur.com/bETYF9Z.png" alt=""></p>
+</blockquote>
+<h3 id="内置日志格式"><a href="#内置日志格式" class="headerlink" title="内置日志格式"></a>内置日志格式</h3><blockquote>
+<p>%(name)s&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>生成日志的Logger名称</p>
+<p>%(levelno)s&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>数字形式的日志级别，包括DEBUG,INFO,WARNING,ERROR和CRITICAL。</p>
+<p>%(levelname)s&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>文本形式的日志级别，包括DEBUG,INFO,WARNING,ERROR和CRITICAL。</p>
+<p>%(pathname)s&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>输出该日志的语句所在的原文件的完整路径（如果可用）<br>。<br>%(filename)s&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>文件名。</p>
+<p>%(module)s&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>输出该日志的语句所在的模块名。</p>
+<p>%(funcName)s&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>调用日志输出函数的函数名。</p>
+<p>%(lineno)d&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>调用日志输出函数的语句所在的代码行。</p>
+<p>%(created)f&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>日志被创建的时间，UNIX标准时间格式，表示从1970-1-1  00：00：00 UTC计算器的秒数。</p>
+<p>%(relativeCreated)d&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>日至被创建时间与日志模块被加载时间差，单位为毫秒。</p>
+<p>%(asctime)s&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>日志创建时间，默认格式是’2003-07-08  16:49:45,896’，逗号后为毫秒数。</p>
+<p>%(msecs)d&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>毫秒级别的日志创建时间</p>
+<p>%(thread)d&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>线程ID（如果可用）</p>
+<p>%(threadName)s&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>线程名称（如果可用）</p>
+<p>%(process)d&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>进程ID（如果可用）</p>
+<p>%(message)s &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<br>日志信息</p>
+</blockquote>
+<!-- &#160; 表示一个空格-->
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/datetime Module.html" rel="next" title="datetime Module">
+                <i class="fa fa-chevron-left"></i> datetime Module
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">正献</p>
+              <p class="site-description motion-element" itemprop="description">这是个人的学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logger"><span class="nav-number">1.</span> <span class="nav-text">Logger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logging-basicConfig"><span class="nav-number">2.</span> <span class="nav-text">logging.basicConfig()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setLevel"><span class="nav-number">3.</span> <span class="nav-text">setLevel()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logging-getLogger-or-logging-getLoger-‘sample-test’"><span class="nav-number">4.</span> <span class="nav-text">logging.getLogger()  or logging.getLoger(‘sample_test’)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handler"><span class="nav-number">5.</span> <span class="nav-text">Handler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最佳使用logging的方案"><span class="nav-number">6.</span> <span class="nav-text">最佳使用logging的方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置日志格式"><span class="nav-number">7.</span> <span class="nav-text">内置日志格式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">正献</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
